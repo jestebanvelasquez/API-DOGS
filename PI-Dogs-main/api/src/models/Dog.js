@@ -1,43 +1,55 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes} = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Dog', {
     id: {
-      type: DataTypes.UUID,//user unique id
-      defaultValue: DataTypes.UUIDV4,//necesary
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
-      primaryKey: true,
+      primaryKey: true
     },
     name: {
-      type: DataTypes.STRING,// VARCHAR(255)
-      allowNull: false,
-      unique: true
-    },
-    family:{
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull:false,
-      defaultValue:'Solitary'
+    },
+  urlName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+    bredFor: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    life_span:{
+      type: DataTypes.STRING,
+      allowNull:false
     },
     weight:{
-      type: DataTypes.STRING,
+      type:DataTypes.INTEGER,
       allowNull:false
     },
     height:{
-      type: DataTypes.STRING,
+      type:DataTypes.INTEGER,
       allowNull:false
     },
-    LifeExpec:{
-      type: DataTypes.STRING,
-      allowNull:true
+    image: {
+      type:DataTypes.TEXT,
     },
-    image:{
-      type:DataTypes.STRING,
-      allowNull:true
+    route:{
+      type: DataTypes.VIRTUAL,
+      get(){
+        return `/dogs/${this.urlName}`;
+      }
     }
   },
   {
-    timestamps:false,//no agregar fecha de creacion
+    timestamps:false,
+    createdAt: false,
+    updatedAt: 'actualizado'
   });
 };
+
+
+
