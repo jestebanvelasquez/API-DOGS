@@ -3,7 +3,7 @@ const {DataType} = require("sequelize");
 
 module.exports= (selqualize) =>{
     selqualize.define('Temperament', {
-        temperamentName:{
+        name:{
             type: DataType.STRING,
             allowNull: false,
             unique:true

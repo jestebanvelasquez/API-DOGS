@@ -18,6 +18,7 @@ module.exports = (sequelize) => {
     family:{
       type:DataTypes.STRING,
       allowNull:false,
+      defaultValue:'Solitary'
     },
     weight:{
       type: DataTypes.STRING,
@@ -34,14 +35,7 @@ module.exports = (sequelize) => {
     image:{
       type:DataTypes.STRING,
       allowNull:true
-    },
-    createdInDb:{
-      type: DataTypes.BOOLEAN,
-      allowNull:false,
-      defaultValue:true
     }
-
-
   },
   {
     timestamps:false,//no agregar fecha de creacion
